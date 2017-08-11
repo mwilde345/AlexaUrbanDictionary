@@ -35,7 +35,7 @@ const handlers = {
 
     getDefinition(field, function (definition) {
       var speechOutput = "Definition: " + definition;
-      that.emit(':tell', speechOutput);
+      that.emit(':ask', speechOutput, "Give me another word!");
     });
     //callback(session.attributes, buildSpeechletResponseWithoutCard(speechOutput, "", true));
   },
