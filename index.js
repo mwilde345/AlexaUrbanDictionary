@@ -34,7 +34,7 @@ const handlers = {
     var field = intent.slots.WORD.value;
 
     getDefinition(field, function (definition) {
-      var speechOutput = field + " definition: " + definition;
+      var speechOutput = "Definition: " + definition;
       that.emit(':tell', speechOutput);
     });
     //callback(session.attributes, buildSpeechletResponseWithoutCard(speechOutput, "", true));
@@ -68,9 +68,13 @@ function getDefinition(field, callback) {
   setTimeout(() => {
     reqprom(options)
       .then((body) => {
-          var reply = JSON.parse(body).list[0].definition;
-          if (reply.length > 0) {
-            callback(reply);
+          var reply = JSON.parse(body);
+          if(reply.result_type!='exact'){
+            callback("I turned up empty handed, try another word.");
+          }
+          var def = reply.list[0].definition;
+          if (def.length > 0) {
+            callback(def);
           } else {
             callback("ERROR");
           }
