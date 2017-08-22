@@ -4,7 +4,9 @@
     "alexa-app-server": "^3.0.1",
     "alexa-sdk": "^1.0.11",
     "aws-sdk": "^2.96.0",
+    "badwords": "^1.0.0",
     "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+    "request-promise": "^4.2.1",
+    "ssml-builder": "^0.2.4"
   }
 }
